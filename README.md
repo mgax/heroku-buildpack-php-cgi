@@ -18,7 +18,7 @@ cd /tmp
 # Affixed to all vendored binary output to represent changes to the
 # compilation environment without a change to the upstream version,
 # e.g. PHP 5.3.27 without, and then subsequently with, libmcrypt.
-heroku_rev='-mgax-1'
+heroku_rev='-mgax-2'
 
 # Clear /app directory
 find /app -mindepth 1 -print0 | xargs -0 rm -rf
@@ -67,7 +67,8 @@ pushd $php_dirname
 --with-mysql --with-pdo-mysql --with-pgsql --with-pdo-pgsql         \
 --with-iconv --with-gd --with-curl=/usr/lib                         \
 --with-config-file-path=/app/php --enable-soap=shared               \
---with-openssl --with-mcrypt=/app/vendor/mcrypt --enable-sockets
+--with-openssl --with-mcrypt=/app/vendor/mcrypt --enable-sockets    \
+--enable-mbstring
 make -s
 make install -s
 popd
